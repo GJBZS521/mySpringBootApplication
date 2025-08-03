@@ -1,6 +1,7 @@
 package org.example;
 
 import org.apache.ibatis.annotations.Param;
+import org.example.annotation.MethodCostTimeAnnotation;
 import org.example.annotation.MethodExecutionAnnotation;
 import org.example.dao.PersonDao;
 import org.example.product.KafkaProduct;
@@ -49,6 +50,7 @@ public class MyProjectImpl implements HelloWorldService {
 
     @Override
     @GetMapping("/sendInfoToMQ")
+    @MethodCostTimeAnnotation
     public void sendInfoToMQ(@Param("key")String key,@Param("value")String value) {
         kafkaProduct.sendIntoMQ(key, value);
     }
@@ -61,22 +63,22 @@ public class MyProjectImpl implements HelloWorldService {
     }
 
     @Override
-    @MethodExecutionAnnotation(value = "学习注解第二课", logArguments = false)
+//    @MethodExecutionAnnotation(value = "学习注解第二课", logArguments = false)
     @GetMapping("/getAnnotationMethod2")
     public void getAnnotationMethod2(String arg1) {
         System.out.println("!!!!!!!!!!!!!!!!");
     }
 
     @Override
-    @MethodExecutionAnnotation(value = "学习注解第三课", logArguments = false, logCaller = false)
+//    @MethodExecutionAnnotation(value = "学习注解第三课", logArguments = false, logCaller = false)
     @GetMapping("/getAnnotationMethod3")
     public void getAnnotationMethod3() {
         System.out.println("-----------------");
     }
 
-    @MethodExecutionAnnotation(value = "学习注解第四课", logArguments = false, logCaller = false)
+//    @MethodExecutionAnnotation(value = "学习注解第四课", logArguments = false, logCaller = false)
     @GetMapping("/getAnnotationMethod4")
     public void getAnnotationMethod4(String arg1, String arg2) {
-        System.out.println("execute getAnnotationMethod4");
+        System.out.println("execute getAnnotationMethod4 arg1 = " + arg1 + " arg2 = " + arg2);
     }
 }

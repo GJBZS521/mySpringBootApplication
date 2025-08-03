@@ -18,8 +18,7 @@ public class KafkaProduct {
     @Transactional
     public void sendIntoMQ(String key, String value) {
         try {
-            template.send(Constants.MY_TEST_TOPIC, value);
-//        template.send(Constants.MY_TEST_TOPIC, new HashMap<String, String>().put(key, value));
+            template.send(Constants.MY_TEST_TOPIC, value).get();
             System.out.println("send information success");
         } catch (Exception e) {
             e.printStackTrace();
