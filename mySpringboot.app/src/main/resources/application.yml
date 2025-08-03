@@ -36,9 +36,9 @@ spring:
       #auto-offset-reset: earliest      # 从最早的消息开始消费（可选：latest）
       enable-auto-commit: false
 
-logging:
-  level:
-    org.springframework.core.env: TRACE
+#logging:
+#  level:
+#    org.springframework.core.env: TRACE
     #    org:
     #      mybatis: DEBUG
 

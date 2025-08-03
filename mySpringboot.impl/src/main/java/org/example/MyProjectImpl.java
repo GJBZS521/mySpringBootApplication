@@ -1,6 +1,7 @@
 package org.example;
 
 import org.apache.ibatis.annotations.Param;
+import org.example.annotation.MethodExecutionAnnotation;
 import org.example.dao.PersonDao;
 import org.example.product.KafkaProduct;
 import org.example.util.RedisClient;
@@ -52,5 +53,30 @@ public class MyProjectImpl implements HelloWorldService {
         kafkaProduct.sendIntoMQ(key, value);
     }
 
+    @Override
+    @MethodExecutionAnnotation("学习注解第一课")
+    @GetMapping("/getAnnotationMethod1")
+    public void getAnnotationMethod1(String arg1, String arg2) {
+        System.out.println("execute getAnnotationMethod1");
+    }
 
+    @Override
+    @MethodExecutionAnnotation(value = "学习注解第二课", logArguments = false)
+    @GetMapping("/getAnnotationMethod2")
+    public void getAnnotationMethod2(String arg1) {
+        System.out.println("!!!!!!!!!!!!!!!!");
+    }
+
+    @Override
+    @MethodExecutionAnnotation(value = "学习注解第三课", logArguments = false, logCaller = false)
+    @GetMapping("/getAnnotationMethod3")
+    public void getAnnotationMethod3() {
+        System.out.println("-----------------");
+    }
+
+    @MethodExecutionAnnotation(value = "学习注解第四课", logArguments = false, logCaller = false)
+    @GetMapping("/getAnnotationMethod4")
+    public void getAnnotationMethod4(String arg1, String arg2) {
+        System.out.println("execute getAnnotationMethod4");
+    }
 }

@@ -15,4 +15,10 @@ public interface HelloWorldService {
     String getResultByKey(String key);
 
     void sendInfoToMQ(String key, String value);
+
+    void getAnnotationMethod1(String arg1, String arg2);
+
+    void getAnnotationMethod2(String arg1);
+
+    void getAnnotationMethod3();
 }
